@@ -20,8 +20,9 @@ function App() {
 				<AppBanner pageTitle={'Home'}></AppBanner>
 				<Router>
 					<Routes>
-						<Route path='/' element={<Home />} />
-						<Route path='/select_theme' element={<ThemeSelector />} />
+						<Route path='/front-end-27' element={<Home />} />
+						<Route path='/front-end-27/select_theme' element={<ThemeSelector />} />
+						<Route path='*' element={<Home />} />
 					</Routes>
 				</Router>
 				<FooterBanner themeColor={'blueGrey'} themeStrength={500}></FooterBanner>

@@ -58,11 +58,11 @@ function AppBanner() {
         switch(pathArray[pathArray.length - 1]) {
             case 'select_theme':
                 pageName = 'Select Theme';
-                pathName = '/select_theme';
+                pathName = '/front-end-27/select_theme';
                 break;
             default:
                 pageName = 'Home';
-                pathName = '/';
+                pathName = '/front-end-27';
                 break;
         }
         dispatch({
@@ -79,12 +79,12 @@ function AppBanner() {
 
     const returnHome = () => {
         setAnchorEl(null);
-        window.location.replace('/');
+        window.location.replace('/front-end-27');
     };
 
     const selectTheme = () => {
         setAnchorEl(null);
-        window.location.replace('/select_theme');
+        window.location.replace('/front-end-27/select_theme');
     };
 
     // console.log(appState);
