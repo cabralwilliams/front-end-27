@@ -1,25 +1,33 @@
 import logo from './logo.svg';
 import './App.css';
+import AppBanner from './components/AppBanner';
+import Spinner from './components/Spinner';
+import FooterBanner from './components/FooterBanner';
+import Home from './pages/Home';
+import ThemeSelector from './pages/ThemeSelector';
+import { store } from './utils/store';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+// <Spinner opacity={0.85} spinnerSize={15} variant={'h3'} message={'Activating'} themeColor={'yellow'} themeStrength={800}></Spinner>
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<Provider store={store}>
+			<div className="App">
+				<AppBanner pageTitle={'Home'}></AppBanner>
+				<Router>
+					<Routes>
+						<Route path='/' element={<Home />} />
+						<Route path='/select_theme' element={<ThemeSelector />} />
+					</Routes>
+				</Router>
+				<FooterBanner themeColor={'blueGrey'} themeStrength={500}></FooterBanner>
+			</div>
+		</Provider>
+	);
 }
 
 export default App;
