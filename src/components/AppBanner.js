@@ -32,9 +32,6 @@ function AppBanner() {
     };
 
     useEffect(() => {
-        // if(!themeSet) {
-        //     setTheme(basicTheme(themeColor,themeStrength));
-        // }
         const storedTheme = localStorage.getItem('storedTheme');
         if(!storedTheme) {
             setTheme(basicTheme(appState.themeColor, appState.themeStrength));
@@ -52,39 +49,28 @@ function AppBanner() {
         }
     }, [appState, dispatch]);
 
-    useEffect(() => {
-        const pathArray = window.location.toString().split('/');
-        let pageName, pathName;
-        switch(pathArray[pathArray.length - 1]) {
-            case 'select_theme':
-                pageName = 'Select Theme';
-                pathName = '/front-end-27/select_theme';
-                break;
-            default:
-                pageName = 'Home';
-                pathName = '/front-end-27';
-                break;
-        }
+    const returnHome = () => {
+        setAnchorEl(null);
         dispatch({
             type: CHANGE_PAGE,
             payload: {
-                activePage: pageName,
-                activePath: pathName
+                activePage: 'Home',
+                activePath: '/'
             }
         });
-        setPageName(pageName);
-    }, [pageName, dispatch]);
-
-    // console.log(theme);
-
-    const returnHome = () => {
-        setAnchorEl(null);
-        window.location.replace('/front-end-27');
+        setPageName('Home');
     };
 
     const selectTheme = () => {
         setAnchorEl(null);
-        window.location.replace('/front-end-27/select_theme');
+        dispatch({
+            type: CHANGE_PAGE,
+            payload: {
+                activePage: 'Select Theme',
+                activePath: '/select_theme'
+            }
+        });
+        setPageName('Select Theme');
     };
 
     // console.log(appState);
